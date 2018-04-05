@@ -71,16 +71,16 @@ extension Value {
 
 // Parse a whole CSS stylesheet.
 func parse(_ source: String) -> Stylesheet {
-    var parser = Parser(pos: 0, input: source)
+    var parser = CSSParser(pos: 0, input: source)
     return Stylesheet(rules: parser.parseRules())
 }
 
-struct Parser {
+struct CSSParser {
     var pos: UInt
     var input: String
 }
 
-extension Parser {
+extension CSSParser {
     // Parse a list of rule sets, separated by optional whitespace.
     mutating func parseRules() -> [Rule] {
         var rules: [Rule] = []
